@@ -1,0 +1,47 @@
+{% load widget_tweaks %}
+<form data-url="registered" method="POST" id="logform">
+  {%csrf_token%}
+
+<div class="modal-header">
+  <h5 class="modal-title text-center">Login here</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+ 
+    <div class="form-group">
+      <label class="col-form-label">Email</label>
+      {{ login_form.email|add_class:"form-control" }}
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label">Password</label>
+      {{ login_form.password|add_class:"form-control" }}
+    </div>
+
+    {% if login_form.non_field_errors %}
+
+    <p style="color: red">{{login_form.non_field_errors}}</p>
+
+    {%endif%}
+    <div class="row">
+      <div class="col-12">
+        <a
+          href=""
+          style="
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            font: bold;
+          "
+          >Forget Passsword</a
+        >
+      </div>
+    </div>
+
+    <div class="right-w3l">
+      <input type="submit" class="form-control logi" value="Login" />
+    </div>
+</div>
+</form>
