@@ -87,6 +87,13 @@ def Main(request):
          'DeleteCheckout':'/delete-Checkout/',
          'ListCheckout':'/list-Checkout/',
 
+
+         'CreateBranch':'/create-Branch/',
+         'UpdateBranch':'/patch-Branch/',
+         'DeleteBranch':'/delete-Branch/',
+         'ListBranch':'/list-Branch/',
+
+
          'CategoryList':'/Category/',
          'ProductSearch':'/ProductSearch/',
         'ProductSort':'/ProductSort/',
@@ -145,6 +152,23 @@ class PatchBranch(generics.RetrieveUpdateDestroyAPIView):
     queryset = Branch.objects.all()
 
 
+##Brand START######################################################################################
+
+
+class CreateBrand(generics.CreateAPIView):
+    queryset = Brand.objects.all()
+    serializer_class = BrandSerializer
+
+# class to list files
+class ListBrand(generics.ListAPIView):
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
+
+
+# can perform get, patch and delete here
+class PatchBrand(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = BrandSerializer
+    queryset = Brand.objects.all()
 
 ##PRODUCT START######################################################################################
 

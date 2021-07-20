@@ -52,6 +52,11 @@ urlpatterns = [
     path('ProductSearch',ProductSearch.as_view()),
     path('ProductSort',ProductSort.as_view()),
 
+    path('create-Branch',CreateBranch.as_view()),
+    path('patch-Branch/<str:pk>',PatchBranch.as_view()),
+    path('delete-Branch/<str:pk>',PatchBranch.as_view()),
+    path('list-Branch',ListBranch.as_view()),
+
    
       
 

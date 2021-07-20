@@ -21,6 +21,8 @@ class MyUserAdmin(BaseUserAdmin):
     )
 admin.site.register(MyUser,MyUserAdmin)
 admin.site.register(Branch)
+admin.site.register(Brand)
+
 admin.site.register(Products)
 admin.site.register(Variant)
 admin.site.register(Warranty)

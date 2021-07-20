@@ -93,10 +93,18 @@ class Category(MPTTModel):
     def __str__(self):
         return f'{self.name} '
 
+class Brand(models.Model):
+    name=models.CharField(max_length=100,blank=False,null=False)
+    description=models.CharField(max_length=100,blank=False,null=False)
+    meta=models.JSONField()
+    status = models.BooleanField(default=False)
+    def __str__(self):
+            return f'{self.name} Brand '
 
 
 class Products(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE,blank= True,null=True)
+    brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE,blank= True,null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     product_code = models.CharField(max_length=100, blank=True, null=True)
     quantity = models.IntegerField(blank=True, null=True)
@@ -111,7 +119,10 @@ class Products(models.Model):
 
 class Variant(models.Model):
     product= models.ForeignKey(Products,on_delete=models.SET_NULL, blank= True,null=True)
+    brand_id = models.ForeignKey(Brand, on_delete=models.CASCADE,blank= True,null=True)
+
     variant_code = models.CharField(max_length=100, blank=True, null=True)
+
     description = models.TextField(null=True,blank=True)
     price = models.IntegerField(blank=True, null=True)
     image =  models.ImageField(upload_to='images',blank= True,null=True)
